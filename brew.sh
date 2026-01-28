@@ -143,6 +143,7 @@ $(brew --prefix)/bin/pipx install djlint
 $(brew --prefix)/bin/pipx install ruff
 
 # Define an array of applications to install using Homebrew Cask.
+# We deduplicate this list to ensure each is only checked once.
 apps=(
     "google-chrome"
     "firefox"
@@ -163,19 +164,28 @@ apps=(
     "dbeaver-community"
     "intellij-idea-ce"
     "notion"
-    "postman"
     "readdle-spark"
     "telegram"
 )
 
 # Loop over the array to install each application.
 for app in "${apps[@]}"; do
-    if brew list --cask | grep -q "^$app\$"; then
-        echo "$app is already installed. Skipping..."
-    else
-        echo "Installing $app..."
-        brew install --cask "$app"
+    # 1. Check if brew thinks it's installed
+    if brew list --cask "$app" &>/dev/null; then
+        echo "$app is already installed via Homebrew. Skipping..."
+        continue
     fi
+    
+    # 2. Check if the app bundle exists in /Applications (e.g. for manual installs)
+    # We substitute dashes with spaces/wildcards to match common app names
+    app_pattern="${app//-/.*}"
+    if ls -d /Applications/*.app 2>/dev/null | grep -iq "$app_pattern"; then
+        echo "$app bundle found in /Applications. Skipping to avoid conflicts..."
+        continue
+    fi
+
+    echo "Installing $app..."
+    brew install --cask "$app"
 done
 
 # # Install fonts. Fonts are now available directly from Homebrew cask
