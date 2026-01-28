@@ -13,6 +13,13 @@ dotfiledir="${HOME}/dotfiles"
 # list of files/folders to symlink in ${homedir}
 files=(zshrc zprofile zprompt bashrc bash_profile bash_prompt aliases private)
 
+# Reminder to ensure .private is ready
+echo "--------------------------------------------------"
+echo "REMINDER: Ensure you have your .private file ready if needed."
+echo "If this is a new machine, you should copy your .private file to this directory now."
+echo "--------------------------------------------------"
+read -p "Press Enter to acknowledge and continue with installation..."
+
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
 cd "${dotfiledir}" || exit
