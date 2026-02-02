@@ -83,7 +83,8 @@ fi
 if [ "$DO_SPLIT" = false ]; then
     # --- COMPRESS ONLY MODE (DEFAULT) ---
     echo "Mode: Compression Only"
-    output_name="compressed_${file_name%.*}.mp4"
+    base_filename=$(basename "$file_name")
+    output_name="compressed_${base_filename%.*}.mp4"
     
     echo "Compressing $file_name -> $output_name (GPU Accelerated)..."
     ffmpeg -stats -fflags +genpts -i "$file_name" \
