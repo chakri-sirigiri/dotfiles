@@ -51,23 +51,11 @@ fi
 # MariaDB connector (conditional)
 _add_to_path_if_dir "/opt/homebrew/opt/mariadb-connector-c/bin"
 
-# UV completions (conditional)
-if command -v uv &>/dev/null; then
-    eval "$(uv generate-shell-completion zsh)"
-    eval "$(uvx --generate-shell-completion zsh)"
-fi
-
 # Codeium / Antigravity / Opencode (conditional)
 _add_to_path_if_dir "$HOME/.codeium/windsurf/bin"
 _add_to_path_if_dir "$HOME/.antigravity/antigravity/bin"
 _add_to_path_if_dir "$HOME/.opencode/bin"
 
-# Docker Desktop completions (conditional)
-if [ -d "$HOME/.docker/completions" ]; then
-    fpath=($HOME/.docker/completions $fpath)
-fi
-autoload -Uz compinit
-compinit
 # --------------------------------------------------
 #  End of PATH configuration
 # --------------------------------------------------

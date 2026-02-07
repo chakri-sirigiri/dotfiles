@@ -38,6 +38,26 @@ plugins=($available_plugins)
 if command -v kubectl &>/dev/null; then
     source <(kubectl completion zsh)
 fi
+
+# Initialize completion system if not already done
+# This ensures compdef is available for the following evals
+if ! builtin whence compdef > /dev/null; then
+    autoload -Uz compinit && compinit
+fi
+
+# UV completions (conditional)
+if command -v uv &>/dev/null; then
+    eval "$(uv generate-shell-completion zsh)"
+    eval "$(uvx --generate-shell-completion zsh)"
+fi
+
+# Docker Desktop completions (conditional)
+if [ -d "$HOME/.docker/completions" ]; then
+    fpath=($HOME/.docker/completions $fpath)
+    # Re-run compinit if we added to fpath and Oh-My-Zsh didn't already handle it
+    # (OMZ usually handles fpath if set before sourcing, but here we are after)
+    autoload -Uz compinit && compinit
+fi
 # --------------------------------------------------
 #  Load custom dotfiles
 # --------------------------------------------------
