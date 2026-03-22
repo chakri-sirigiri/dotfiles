@@ -40,31 +40,33 @@ brew upgrade
 brew upgrade --cask
 brew cleanup
 
-# Start Ollama as a background service so it starts automatically on login
-brew services start ollama
 
 # Define an array of packages to install using Homebrew.
+# Packages are ordered so common prerequisites are installed before dependents
+# (for example: install `git` before `gh`, `python` before `pipx`,
+# and `tcl-tk` before `python-tk`). This helps reduce errors during scripted installs.
 packages=(
-    "python"
-    "tcl-tk"
-    "python-tk"
     "bash"
     "zsh"
     "git"
-    "tree"
-    "node"
-    "uv"
-    "pipx"
     "gh"
-    "tailscale"
-    "ffmpeg"
-    "fswatch"
     "libheif"
+    "ffmpeg"
+    "node"
+    "python"
+    "pipx"
+    "tcl-tk"
+    "python-tk"
     "fdupes"
+    "fswatch"
     "mactop"
-    "tesseract"
+    "rsync"
+    "rumdl"
     "sqlite"
-    "ollama"
+    "tailscale"
+    "tesseract"
+    "tree"
+    "uv"
 )
 
 # Loop over the array to install each application.

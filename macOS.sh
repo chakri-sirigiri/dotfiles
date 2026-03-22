@@ -43,6 +43,8 @@ manual_installs=(
     "digiKam"
     "ChatGPT"
     "iMazing"
+    "Ollama"
+    "Wispr Flow"
 )
 
 # Loop over the array to install each application.

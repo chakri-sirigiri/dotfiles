@@ -49,7 +49,7 @@
   // Copilot settings
   "github.copilot.chat.agent.thinkingTool": true,
   // Python settings
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv_m3m/bin/python",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
