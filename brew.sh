@@ -121,6 +121,9 @@ fi
 # Github uses "main" as the default branch name
 $(brew --prefix)/bin/git config --global init.defaultBranch main
 
+# Use a global gitignore file from the dotfiles home
+$(brew --prefix)/bin/git config --global core.excludesFile "${HOME}/.gitignore_global"
+
 # Check if already authenticated with GitHub to avoid re-authentication prompt
 if ! $(brew --prefix)/bin/gh auth status &>/dev/null; then
     echo "You will need to authenticate with GitHub. Follow the prompts to login..."

@@ -40,7 +40,7 @@
   "diffEditor.useInlineViewWhenSpaceIsLimited": false,
   "files.exclude": {
     "**/.git": false,
-    "**/.mypy_cache": true
+    "**/.mypy_cache": true,
   },
   // Zen Mode settings
   "zenMode.centerLayout": false,
@@ -55,8 +55,8 @@
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       // "source.fixAll": "explicit"
-      "source.organizeImports": "explicit"
-    }
+      "source.organizeImports": "explicit",
+    },
   },
   // "python.analysis.inlayHints.variableTypes": true,
   // "python.analysis.inlayHints.functionReturnTypes": true,
@@ -67,29 +67,25 @@
   "code-runner.ignoreSelection": true,
   "code-runner.saveFileBeforeRun": true,
   "code-runner.executorMap": {
-    "python": "\"$pythonPath\" -u $fullFileName"
+    "python": "\"$pythonPath\" -u $fullFileName",
   },
   "code-runner.enableAppInsights": false,
   // HTML, Jinja2, and Django settings
   "django.snippets.use": false,
   "[html][django-html][jinja][jinja-html]": {
     "editor.defaultFormatter": "monosans.djlint",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "files.associations": {
     "*.html": "django-html",
-    "*.svg": "html"
+    "*.svg": "html",
   },
   "emmet.includeLanguages": {
-    "django-html": "html"
+    "django-html": "html",
   },
   "djlint.useVenv": false,
   "djlint.pythonPath": "/opt/pipx/venvs/djlint/bin/python",
-  "djlint.ignore": [
-    "H031",
-    "D004",
-    "H023"
-  ],
+  "djlint.ignore": ["H031", "D004", "H023"],
   "djlint.maxBlankLines": 1,
   "djlint.lineBreakAfterMultilineTag": false,
   // Plaintext settings
@@ -97,12 +93,12 @@
     "editor.quickSuggestions": {
       "comments": "off",
       "strings": "off",
-      "other": "off"
-    }
+      "other": "off",
+    },
   },
   // Shell script settings
   "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
   // Notebook settings
   "notebook.output.scrolling": true,
@@ -110,12 +106,13 @@
   "notebook.lineNumbers": "on",
   "notebook.scrolling.revealNextCellOnExecute": "none",
   "notebook.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.organizeImports": true,
   },
   // SQL Tools settings
   "sqltools.useNodeRuntime": true,
   "liveServer.settings.donotShowInfoMsg": true,
   "files.autoSave": "afterDelay",
   "editor.inlineSuggest.suppressSuggestions": true,
-  "cody.suggestions.mode": "auto-edit"
+  "cody.suggestions.mode": "auto-edit",
+  "git.autofetch": true,
 }
